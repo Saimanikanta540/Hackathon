@@ -15,6 +15,9 @@ const BookingHistory = ({ bookings }) => {
               <p>Start Date: {new Date(booking.startDate).toLocaleDateString()}</p>
               <p>End Date: {new Date(booking.endDate).toLocaleDateString()}</p>
               <p>Status: <span className={`status ${booking.status.toLowerCase()}`}>{booking.status}</span></p>
+              {booking.car && typeof booking.car.availableCount !== 'undefined' && (
+                <p className="car-available-count">Available: {booking.car.availableCount}</p>
+              )}
               <p>Total Price: ${booking.totalPrice}</p>
             </div>
           ))}

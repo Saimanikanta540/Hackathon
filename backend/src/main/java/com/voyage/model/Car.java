@@ -43,6 +43,9 @@ public class Car {
 	@Pattern(regexp = "^(Available|Booked|Maintenance|Unavailable)$", message = "Invalid status")
 	private String status;
 
+	@Min(value = 0, message = "Available count cannot be negative")
+	private int availableCount;
+
 	@ManyToOne
 	@JoinColumn(name = "ownerId", nullable = false)
 	private User owner; // Owner is a Customer (User with Customer role)
@@ -74,6 +77,9 @@ public class Car {
 	public String getStatus() { return status; }
 	public void setStatus(String status) { this.status = status; }
 
+	public int getAvailableCount() { return availableCount; }
+	public void setAvailableCount(int availableCount) { this.availableCount = availableCount; }
+
 	public User getOwner() { return owner; }
 	public void setOwner(User owner) { this.owner = owner; }
 
@@ -81,6 +87,6 @@ public class Car {
 	public String toString() {
 		return "Car [id=" + id + ", name=" + name + ", brand=" + brand + ", type=" + type 
 			+ ", color=" + color + ", fuelType=" + fuelType + ", price=" + price 
-			+ ", status=" + status + "]";
+			+ ", status=" + status + ", availableCount=" + availableCount + "]";
 	}	
 }

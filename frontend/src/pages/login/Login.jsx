@@ -61,7 +61,7 @@ const Login = () => {
           <div className="login-header">
             <Link to="/" className="brand-link">
               <span className="brand-icon">🚗</span>
-              <span className="brand-text">CarRental</span>
+              <span className="hii">CarRental</span>
             </Link>
             <h1>Welcome Back</h1>
             <p>Sign in to your account to continue</p>
