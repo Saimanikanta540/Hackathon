@@ -1,0 +1,71 @@
+.bookings-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 1.5rem;
+}
+
+.booking-card {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+  padding: 2rem 1.5rem 1.5rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  transition: box-shadow 0.2s, transform 0.2s;
+  border: none;
+  position: relative;
+}
+.booking-card:hover {
+  box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+  transform: translateY(-4px) scale(1.02);
+}
+
+.booking-card h3 {
+  color: #0033cc;
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 0.7rem;
+  text-align: left;
+}
+.booking-card p {
+  color: #222;
+  font-size: 1.05rem;
+  margin: 0.2rem 0;
+  text-align: left;
+}
+.status {
+  font-weight: 600;
+  padding: 0.2rem 0.7rem;
+  border-radius: 6px;
+  margin-left: 0.3rem;
+}
+.status.confirmed {
+  background: #e6f9ed;
+  color: #28a745;
+}
+.status.pending {
+  background: #fff7e6;
+  color: #ff9800;
+}
+.status.cancelled {
+  background: #fdeaea;
+  color: #dc3545;
+}
+
+@media (max-width: 700px) {
+  .bookings-grid {
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+  }
+  .booking-card {
+    padding: 1.2rem 0.7rem 1rem 0.7rem;
+  }
+  .booking-card h3 {
+    font-size: 1.1rem;
+  }
+  .booking-card p {
+    font-size: 0.98rem;
+  }
+} 

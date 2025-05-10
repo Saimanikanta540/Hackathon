@@ -1,0 +1,138 @@
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: white;
+  box-shadow: var(--shadow-sm);
+  z-index: 1000;
+}
+
+.navbar-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-md);
+  height: 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+}
+
+.brand-link {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  text-decoration: none;
+  color: var(--gray-900);
+  font-weight: 600;
+  font-size: 1.25rem;
+}
+
+.brand-icon {
+  font-size: 1.5rem;
+}
+
+.brand-text {
+  background: linear-gradient(to right, var(--primary), var(--primary-dark));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.navbar-links {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-lg);
+}
+
+.nav-link {
+  text-decoration: none;
+  color: var(--gray-600);
+  font-weight: 500;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--radius-md);
+  transition: all var(--transition-fast);
+}
+
+.nav-link:hover {
+  color: var(--primary);
+  background-color: var(--gray-50);
+}
+
+.nav-link.active {
+  color: var(--primary);
+  background-color: var(--gray-50);
+}
+
+.login-btn {
+  margin-left: var(--spacing-md);
+}
+
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 1.5rem;
+  height: 1.25rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 10;
+}
+
+.menu-toggle span {
+  width: 100%;
+  height: 2px;
+  background-color: var(--gray-600);
+  border-radius: var(--radius-full);
+  transition: all var(--transition-fast);
+}
+
+.menu-toggle.active span:first-child {
+  transform: translateY(8px) rotate(45deg);
+}
+
+.menu-toggle.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-toggle.active span:last-child {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: flex;
+  }
+
+  .navbar-links {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 100%;
+    height: 100vh;
+    background-color: white;
+    flex-direction: column;
+    justify-content: center;
+    padding: var(--spacing-2xl);
+    transition: right var(--transition-normal);
+  }
+
+  .navbar-links.active {
+    right: 0;
+  }
+
+  .nav-link {
+    font-size: 1.25rem;
+    padding: var(--spacing-md);
+  }
+
+  .login-btn {
+    margin: var(--spacing-md) 0 0 0;
+  }
+} 
