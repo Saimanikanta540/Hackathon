@@ -16,6 +16,9 @@ const AvailableCars = ({ cars }) => {
               <p>Brand: {car.brand}</p>
               <p>Type: {car.type}</p>
               <p>Price: ${car.price}/day</p>
+              {typeof car.availableCount !== 'undefined' && (
+                <p className="car-available-count">Available: {car.availableCount}</p>
+              )}
               <button 
                 onClick={() => navigate(`/book-car/${car.id}`)}
                 className="book-button"

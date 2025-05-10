@@ -29,13 +29,39 @@ const Home = () => {
       {/* Hero Section */}
       <section className="hero">
         <div className="hero-overlay"></div>
-        <div className="container">
-          <div className="hero-content">
-            <h1 className="hero-title">Find Your Perfect Ride</h1>
-            <p className="hero-subtitle">Choose from our wide range of vehicles for your next adventure</p>
-            <div className="hero-cta">
-              <Link to="/cars" className="btn btn-primary btn-lg">Browse Cars</Link>
-              <Link to="/about" className="btn btn-secondary btn-lg">Learn More</Link>
+        <div className="hero-content">
+          <h1 className="hero-title">Drive Your Dreams</h1>
+          <p className="hero-subtitle">Experience luxury and comfort with our premium car rental service</p>
+          <div className="hero-search">
+            <div className="search-box">
+              <input type="text" placeholder="Search for cars..." />
+              <button className="search-btn">
+                <i className="fas fa-search"></i>
+              </button>
+            </div>
+          </div>
+          <div className="hero-cta">
+            <Link to="/cars" className="btn btn-primary btn-lg">
+              <i className="fas fa-car"></i>
+              Browse Cars
+            </Link>
+            <Link to="/about" className="btn btn-secondary btn-lg">
+              <i className="fas fa-info-circle"></i>
+              Learn More
+            </Link>
+          </div>
+          <div className="hero-stats">
+            <div className="stat-item">
+              <span className="stat-number">500+</span>
+              <span className="stat-label">Cars Available</span>
+            </div>
+            <div className="stat-item">
+              <span className="stat-number">1000+</span>
+              <span className="stat-label">Happy Customers</span>
+            </div>
+            <div className="stat-item">
+              <span className="stat-number">24/7</span>
+              <span className="stat-label">Support</span>
             </div>
           </div>
         </div>

@@ -68,6 +68,9 @@ const Cars = () => {
                   <p className="car-type">Type: {car.type}</p>
                   <p className="car-price">Price: <span>${car.price}/day</span></p>
                   <p className={`car-status ${car.status.toLowerCase()}`}>Status: {car.status}</p>
+                  {typeof car.availableCount !== 'undefined' && (
+                    <p className="car-available-count">Available: {car.availableCount}</p>
+                  )}
                 </div>
               </div>
             ))
