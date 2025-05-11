@@ -1,0 +1,155 @@
+.bookcar-page {
+  min-height: 100vh;
+  background: #f8fafc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 1rem;
+}
+
+.bookcar-card {
+  background: #504646;
+  border-radius: 1rem;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+  padding: 2.5rem 2rem;
+  max-width: 400px;
+  width: 100%;
+  color: #222;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.bookcar-image {
+  width: 100%;
+  max-width: 320px;
+  border-radius: 0.7rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+}
+
+.bookcar-details {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+.bookcar-details h1 {
+  font-size: 1.5rem;
+  color: #2563eb;
+  margin-bottom: 0.5rem;
+}
+.bookcar-details p {
+  margin: 0.3rem 0;
+  color: #333;
+  font-size: 1.08rem;
+}
+
+.bookcar-form {
+  background: #f8fafc;
+  border-radius: 0.7rem;
+  padding: 1.2rem 1rem;
+  width: 100%;
+  box-shadow: 0 1px 6px rgba(37,99,235,0.04);
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+  align-items: stretch;
+}
+.bookcar-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+.bookcar-form-group label {
+  color: #2563eb;
+  font-weight: 500;
+  margin-bottom: 0.2rem;
+}
+.bookcar-form input[type="date"] {
+  background: #fff;
+  border: 1.5px solid #2563eb;
+  border-radius: 0.5rem;
+  color: #222;
+  padding: 0.7rem 1rem;
+  font-size: 1rem;
+  font-family: inherit;
+  transition: border 0.2s;
+}
+.bookcar-form input[type="date"]:focus {
+  border-color: #1d4ed8;
+  outline: none;
+}
+.bookcar-btn {
+  background: #2563eb;
+  color: #fff;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.8rem 1.5rem;
+  font-weight: 600;
+  font-size: 1.08rem;
+  font-family: inherit;
+  box-shadow: 0 2px 8px rgba(37,99,235,0.07);
+  transition: background 0.2s, box-shadow 0.2s;
+  cursor: pointer;
+  margin-top: 0.5rem;
+}
+.bookcar-btn:disabled {
+  background: #bcd0f7;
+  color: #fff;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+.bookcar-btn:hover:not(:disabled) {
+  background: #1d4ed8;
+}
+.bookcar-btn-secondary {
+  background: #f1f5f9;
+  color: #2563eb;
+  border: 1px solid #2563eb;
+  border-radius: 0.5rem;
+  padding: 0.8rem 1.5rem;
+  font-weight: 600;
+  font-size: 1.08rem;
+  font-family: inherit;
+  margin-top: 0.5rem;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+.bookcar-btn-secondary:hover {
+  background: #e0e7ef;
+  color: #1d4ed8;
+}
+.bookcar-success {
+  color: #22c55e;
+  margin-top: 0.7rem;
+  font-weight: 500;
+  text-align: center;
+}
+.bookcar-error {
+  color: #ef4444;
+  margin-top: 0.7rem;
+  font-weight: 500;
+  text-align: center;
+}
+.bookcar-loading {
+  color: #2563eb;
+  text-align: center;
+  padding: 2rem;
+  font-size: 1.2rem;
+}
+.bookcar-summary {
+  background: #f1f5f9;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  color: #222;
+  font-size: 1rem;
+}
+@media (max-width: 700px) {
+  .bookcar-card {
+    padding: 1.2rem 0.7rem;
+    max-width: 98vw;
+  }
+  .bookcar-image {
+    max-width: 98vw;
+  }
+} 

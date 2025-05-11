@@ -28,4 +28,28 @@ public class AuthController {
         
         return ResponseEntity.badRequest().body("Invalid email or password");
     }
+
+    @PostMapping("/register")
+    public ResponseEntity<?> register(@RequestBody User registerRequest) {
+        // Check if user already exists
+        if (userService.findByEmail(registerRequest.getEmail()) != null) {
+            return ResponseEntity.badRequest().body("Email already in use");
+        }
+        // Set default role if not provided
+        if (registerRequest.getRole() == null || registerRequest.getRole().isEmpty()) {
+            registerRequest.setRole("Customer");
+        }
+        String result = userService.addUser(registerRequest);
+        if (result.toLowerCase().contains("success")) {
+            registerRequest.setPassword(null); // Don't return password
+            return ResponseEntity.ok(registerRequest);
+        } else {
+            return ResponseEntity.badRequest().body(result);
+        }
+    }
+
+    @GetMapping("/test")
+    public String test() {
+        return "Contact API is working!";
+    }
 } 

@@ -16,7 +16,7 @@ public class CarController {
     @Autowired
     private CarService carService;
 
-    @PostMapping
+    @PostMapping("/add")
     public ResponseEntity<String> addCar(@RequestBody Car car) {
         String result = carService.addCar(car);
         return ResponseEntity.ok(result);
@@ -35,12 +35,6 @@ public class CarController {
             return ResponseEntity.ok(car);
         }
         return ResponseEntity.notFound().build();
-    }
-
-    @GetMapping("/owner/{ownerId}")
-    public ResponseEntity<List<Car>> getCarsByOwnerId(@PathVariable Long ownerId) {
-        List<Car> cars = carService.findByOwnerId(ownerId);
-        return ResponseEntity.ok(cars);
     }
 
     @PutMapping("/{id}")

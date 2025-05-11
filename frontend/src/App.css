@@ -102,10 +102,20 @@ input, select, textarea {
   padding: 0.5rem;
   color: #0033cc;
   background-color: #ffffff;
+  transition: all 0.3s ease;
 }
+
+input:hover, select:hover, textarea:hover {
+  background-color: #ffffff;
+  color: #000000;
+  border-color: #000000;
+}
+
 input:focus, select:focus, textarea:focus {
   outline: none;
-  border-color: #002299;
+  border-color: #000000;
+  background-color: #ffffff;
+  color: #000000;
 }
 
 /* Common heading styles */

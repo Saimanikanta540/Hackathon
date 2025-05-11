@@ -67,9 +67,13 @@ const Cars = () => {
                   <p className="car-brand">Brand: {car.brand}</p>
                   <p className="car-type">Type: {car.type}</p>
                   <p className="car-price">Price: <span>${car.price}/day</span></p>
-                  <p className={`car-status ${car.status.toLowerCase()}`}>Status: {car.status}</p>
+                  <p className={`car-status ${car.availableCount === 0 ? 'unavailable' : car.status.toLowerCase()}`}>Status: {car.availableCount === 0 ? 'Unavailable' : car.status}</p>
                   {typeof car.availableCount !== 'undefined' && (
-                    <p className="car-available-count">Available: {car.availableCount}</p>
+                    car.availableCount === 0 ? (
+                      <span className="car-unavailable-badge">Unavailable</span>
+                    ) : (
+                      <p className="car-available-count">Available: {car.availableCount}</p>
+                    )
                   )}
                 </div>
               </div>

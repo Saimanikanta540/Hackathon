@@ -20,12 +20,27 @@ public class CarService {
 	  private UserRepository userRepo;
 	  
 	  public String addCar(Car c) {
-	    // Verify that the owner is a Customer
-	    User owner = c.getOwner();
-	    if (owner == null || !"Customer".equalsIgnoreCase(owner.getRole())) {
-	      return "Error: Car owner must be a Customer";
+	    // Check if car with this ID already exists
+	    if (c.getId() != null) {
+	      Optional<Car> existingCar = carRepo.findById(c.getId());
+	      if (existingCar.isPresent()) {
+	        // Update existing car
+	        Car existing = existingCar.get();
+	        existing.setName(c.getName());
+	        existing.setBrand(c.getBrand());
+	        existing.setType(c.getType());
+	        existing.setColor(c.getColor());
+	        existing.setFuelType(c.getFuelType());
+	        existing.setImage(c.getImage());
+	        existing.setPrice(c.getPrice());
+	        existing.setStatus(c.getStatus());
+	        existing.setAvailableCount(c.getAvailableCount());
+	        carRepo.save(existing);
+	        return "Car Data Updated Successfully...!!!";
+	      }
 	    }
-	    
+	    // For new cars, don't set the ID
+	    c.setId(null);
 	    carRepo.save(c);
 	    return "Car Data Inserted Successfully...!!!";
 	  }
@@ -43,12 +58,6 @@ public class CarService {
 	    Optional<Car> existingCar = carRepo.findById(id);
 	    
 	    if(existingCar.isPresent()) {
-	      // Verify that the new owner is a Customer
-	      User newOwner = car.getOwner();
-	      if (newOwner == null || !"Customer".equalsIgnoreCase(newOwner.getRole())) {
-	        return "Error: Car owner must be a Customer";
-	      }
-	      
 	      Car existing = existingCar.get();
 	      existing.setName(car.getName());
 	      existing.setBrand(car.getBrand());
@@ -58,8 +67,6 @@ public class CarService {
 	      existing.setImage(car.getImage());
 	      existing.setPrice(car.getPrice());
 	      existing.setStatus(car.getStatus());
-	      existing.setOwner(car.getOwner());
-	      
 	      carRepo.save(existing);
 	      return "Car details Updated Successfully";
 	    }
@@ -75,10 +82,5 @@ public class CarService {
 	    }
 	    else
 	      return "Car ID Not Found";
-	  }
-	  
-	  public List<Car> findByOwnerId(Long id){
-		  List<Car> cars = carRepo.findByOwnerId(id);
-		  return cars;
 	  }
 }

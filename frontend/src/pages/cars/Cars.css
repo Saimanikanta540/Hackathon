@@ -8,7 +8,7 @@
 
 .cars-title {
   font-size: 2.5rem;
-  color: var(--primary);
+  color: #0033cc;
   font-weight: 700;
   margin-bottom: var(--spacing-xl);
   text-align: center;
@@ -23,16 +23,17 @@
 }
 .cars-filter-bar select {
   padding: 0.7rem 1.2rem;
-  border: 1px solid var(--primary);
+  border: 1px solid #0033cc;
   border-radius: var(--radius-md);
   font-size: 1rem;
-  color: var(--primary);
-  background: #fff;
-  transition: border 0.2s;
+  color: #0033cc;
+  background: #ffffff;
+  transition: all 0.2s;
 }
 .cars-filter-bar select:focus {
   outline: none;
-  border-color: var(--primary-dark);
+  border-color: #002299;
+  box-shadow: 0 0 0 3px rgba(0, 51, 204, 0.1);
 }
 
 .cars-grid {
@@ -42,19 +43,19 @@
 }
 
 .car-card {
-  background: white;
+  background: #ffffff;
   border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-md);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  transition: box-shadow var(--transition-fast), transform var(--transition-fast);
-  border: none;
+  transition: all 0.3s ease;
+  border: 1px solid #0033cc;
   position: relative;
 }
 .car-card:hover {
-  box-shadow: var(--shadow-lg);
-  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 4px 12px rgba(0, 51, 204, 0.15);
+  transform: translateY(-4px);
 }
 
 .car-image {
@@ -63,7 +64,7 @@
   object-fit: cover;
   border-top-left-radius: var(--radius-lg);
   border-top-right-radius: var(--radius-lg);
-  background: var(--gray-100);
+  background: #f6f8fa;
 }
 
 .car-info {
@@ -74,17 +75,17 @@
 }
 .car-name {
   font-size: 1.3rem;
-  color: var(--primary);
+  color: #0033cc;
   font-weight: 600;
   margin-bottom: 0.2rem;
 }
-.car-brand, .car-type, .car-price, .car-status {
+.car-brand, .car-type, .car-price {
   font-size: 1rem;
-  color: var(--gray-700);
+  color: #333333;
   margin-bottom: 0.1rem;
 }
 .car-price span {
-  color: var(--primary);
+  color: #0033cc;
   font-weight: 600;
 }
 .car-status {
@@ -92,17 +93,31 @@
   margin-top: 0.2rem;
 }
 .car-status.available {
-  color: var(--success);
+  color: #22c55e;
 }
 .car-status.booked, .car-status.unavailable {
-  color: var(--danger);
+  color: #ef4444;
 }
 
 .cars-loading, .cars-error, .cars-empty {
   text-align: center;
-  color: var(--primary);
+  color: #0033cc;
   font-size: 1.2rem;
   padding: var(--spacing-xl) 0;
+}
+
+.car-unavailable-badge {
+  display: inline-block;
+  background: #d32f2f;
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.95rem;
+  border-radius: 1rem;
+  padding: 0.2rem 0.8rem;
+  margin-left: 0.7rem;
+  vertical-align: middle;
+  box-shadow: 0 2px 8px rgba(211,47,47,0.08);
+  letter-spacing: 0.5px;
 }
 
 @media (max-width: 700px) {

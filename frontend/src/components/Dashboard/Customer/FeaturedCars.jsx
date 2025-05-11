@@ -22,9 +22,16 @@ const FeaturedCars = ({ cars }) => {
               <p>Brand: {car.brand}</p>
               <p>Type: {car.type}</p>
               <p>Price: ${car.price}/day</p>
-              <Link to={`/book-car/${car.id}`} className="book-button">
-                Book Now
-              </Link>
+              {typeof car.availableCount !== 'undefined' && (
+                <p className="car-available-count">Available: {car.availableCount}</p>
+              )}
+              {car.availableCount > 0 ? (
+                <Link to={`/book-car/${car.id}`} className="book-button">
+                  Book Now
+                </Link>
+              ) : (
+                <button className="book-button" disabled style={{background: '#ccc', cursor: 'not-allowed'}}>Unavailable</button>
+              )}
             </div>
           </div>
         ))}

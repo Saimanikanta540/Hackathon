@@ -469,4 +469,86 @@
   .stat-number {
     font-size: 1.75rem;
   }
+}
+
+.home-zoomcar {
+  min-height: 100vh;
+  background: #f7f7f7;
+  font-family: 'Poppins', Arial, sans-serif;
+}
+
+.hero-section {
+  background: url('https://zoomcar-assets.zoomcar.com/images/original/5e1b2e7e7b3e4b0b8b8b4567.jpg?format=webp&w=1200') center/cover no-repeat;
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-content {
+  background: rgba(255,255,255,0.95);
+  padding: 2.5rem 3rem;
+  border-radius: 1.2rem;
+  text-align: center;
+  box-shadow: 0 8px 32px rgba(60,60,60,0.08);
+  max-width: 600px;
+}
+
+.hero-content h1 {
+  font-size: 2.5rem;
+  color: #1b5e20;
+  font-weight: 700;
+  margin-bottom: 0.7rem;
+}
+.hero-content p {
+  color: #333;
+  font-size: 1.15rem;
+  margin-bottom: 2rem;
+}
+
+.search-bar {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.search-bar input, .search-bar button {
+  padding: 0.8rem 1.2rem;
+  border-radius: 0.5rem;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  outline: none;
+}
+.search-bar input {
+  min-width: 160px;
+}
+.search-bar button {
+  background: #43a047;
+  color: #fff;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.search-bar button:hover {
+  background: #388e3c;
+}
+
+@media (max-width: 700px) {
+  .hero-content {
+    padding: 1.2rem 0.7rem;
+    max-width: 98vw;
+  }
+  .hero-content h1 {
+    font-size: 1.5rem;
+  }
+  .search-bar {
+    flex-direction: column;
+    gap: 0.7rem;
+  }
+  .search-bar input {
+    min-width: 0;
+    width: 100%;
+  }
 } 

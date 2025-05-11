@@ -7,6 +7,9 @@ const Home = () => {
   const [cars, setCars] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
+  const [location, setLocation] = useState('');
+  const [startDate, setStartDate] = useState('');
+  const [endDate, setEndDate] = useState('');
 
   useEffect(() => {
     const fetchCars = async () => {
@@ -24,46 +27,40 @@ const Home = () => {
     fetchCars();
   }, []);
 
+  const handleSearch = (e) => {
+    e.preventDefault();
+    // Implement search logic or navigation here
+    alert(`Searching cars in ${location} from ${startDate} to ${endDate}`);
+  };
+
   return (
-    <div className="home">
-      {/* Hero Section */}
-      <section className="hero">
-        <div className="hero-overlay"></div>
+    <div className="home-zoomcar">
+      <section className="hero-section">
         <div className="hero-content">
-          <h1 className="hero-title">Drive Your Dreams</h1>
-          <p className="hero-subtitle">Experience luxury and comfort with our premium car rental service</p>
-          <div className="hero-search">
-            <div className="search-box">
-              <input type="text" placeholder="Search for cars..." />
-              <button className="search-btn">
-                <i className="fas fa-search"></i>
-              </button>
-            </div>
-          </div>
-          <div className="hero-cta">
-            <Link to="/cars" className="btn btn-primary btn-lg">
-              <i className="fas fa-car"></i>
-              Browse Cars
-            </Link>
-            <Link to="/about" className="btn btn-secondary btn-lg">
-              <i className="fas fa-info-circle"></i>
-              Learn More
-            </Link>
-          </div>
-          <div className="hero-stats">
-            <div className="stat-item">
-              <span className="stat-number">500+</span>
-              <span className="stat-label">Cars Available</span>
-            </div>
-            <div className="stat-item">
-              <span className="stat-number">1000+</span>
-              <span className="stat-label">Happy Customers</span>
-            </div>
-            <div className="stat-item">
-              <span className="stat-number">24/7</span>
-              <span className="stat-label">Support</span>
-            </div>
-          </div>
+          <h1>Self Drive Car Rentals in Your City</h1>
+          <p>Book a car for self drive by the hour, day, or week</p>
+          <form className="search-bar" onSubmit={handleSearch}>
+            <input
+              type="text"
+              placeholder="Enter pickup city or location"
+              value={location}
+              onChange={e => setLocation(e.target.value)}
+              required
+            />
+            <input
+              type="date"
+              value={startDate}
+              onChange={e => setStartDate(e.target.value)}
+              required
+            />
+            <input
+              type="date"
+              value={endDate}
+              onChange={e => setEndDate(e.target.value)}
+              required
+            />
+            <button type="submit">Search</button>
+          </form>
         </div>
       </section>
 

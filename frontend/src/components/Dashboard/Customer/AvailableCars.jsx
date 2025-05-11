@@ -19,12 +19,16 @@ const AvailableCars = ({ cars }) => {
               {typeof car.availableCount !== 'undefined' && (
                 <p className="car-available-count">Available: {car.availableCount}</p>
               )}
-              <button 
-                onClick={() => navigate(`/book-car/${car.id}`)}
-                className="book-button"
-              >
-                Book Now
-              </button>
+              {car.availableCount > 0 ? (
+                <button 
+                  onClick={() => navigate(`/book-car/${car.id}`)}
+                  className="book-button"
+                >
+                  Book Now
+                </button>
+              ) : (
+                <button className="book-button" disabled style={{background: '#ccc', cursor: 'not-allowed'}}>Unavailable</button>
+              )}
             </div>
           </div>
         ))}

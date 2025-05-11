@@ -4,6 +4,7 @@ import DashboardLayout from '../../components/Dashboard/DashboardLayout';
 import SystemOverview from '../../components/Dashboard/Admin/SystemOverview';
 import UserManagement from '../../components/Dashboard/Admin/UserManagement';
 import RecentBookings from '../../components/Dashboard/Admin/RecentBookings';
+import CarManagement from '../../components/Dashboard/Admin/CarManagement';
 
 const AdminDashboard = () => {
   const navigate = useNavigate();
@@ -69,6 +70,45 @@ const AdminDashboard = () => {
     }
   };
 
+  // --- Car Management Logic ---
+  const handleDeleteCar = async (carId) => {
+    try {
+      const response = await fetch(`http://localhost:8080/api/cars/${carId}`, {
+        method: 'DELETE',
+      });
+      if (response.ok) {
+        setCars(cars.filter(car => car.id !== carId));
+      }
+    } catch (err) {
+      setError('Failed to delete car');
+    }
+  };
+
+  const handleUpdateCarStatus = async (carId, newStatus) => {
+    try {
+      const response = await fetch(`http://localhost:8080/api/cars/${carId}/status`, {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ status: newStatus }),
+      });
+      if (response.ok) {
+        setCars(cars.map(car => car.id === carId ? { ...car, status: newStatus } : car));
+      }
+    } catch (err) {
+      setError('Failed to update car status');
+    }
+  };
+
+  const handleAddCar = () => {
+    // Refresh cars after adding
+    fetchDashboardData();
+  };
+
+  // Add Car button handler
+  const handleGoToAddCar = () => {
+    navigate('/admin/add-car');
+  };
+
   if (loading) {
     return <div className="loading">Loading...</div>;
   }
@@ -84,6 +124,12 @@ const AdminDashboard = () => {
     <DashboardLayout title="Admin Dashboard">
       <SystemOverview stats={stats} />
       <UserManagement users={users} onDeleteUser={handleDeleteUser} />
+      <CarManagement
+        cars={cars}
+        onDeleteCar={handleDeleteCar}
+        onUpdateStatus={handleUpdateCarStatus}
+        onAddCar={handleAddCar}
+      />
       <RecentBookings bookings={bookings} />
     </DashboardLayout>
   );

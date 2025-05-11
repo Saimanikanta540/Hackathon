@@ -4,8 +4,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
@@ -46,10 +44,6 @@ public class Car {
 	@Min(value = 0, message = "Available count cannot be negative")
 	private int availableCount;
 
-	@ManyToOne
-	@JoinColumn(name = "ownerId", nullable = false)
-	private User owner; // Owner is a Customer (User with Customer role)
-
 	public Long getId() { return id; }
 	public void setId(Long id) { this.id = id; }
 
@@ -79,9 +73,6 @@ public class Car {
 
 	public int getAvailableCount() { return availableCount; }
 	public void setAvailableCount(int availableCount) { this.availableCount = availableCount; }
-
-	public User getOwner() { return owner; }
-	public void setOwner(User owner) { this.owner = owner; }
 
 	@Override
 	public String toString() {

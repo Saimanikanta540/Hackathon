@@ -7,7 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.voyage.model.Booking;
+import com.voyage.model.Car;
 import com.voyage.repository.BookingRepository;
+import com.voyage.repository.CarRepository;
 
 @Service
 public class BookingService {
@@ -15,8 +17,20 @@ public class BookingService {
 	  @Autowired
 	  private BookingRepository bookingRepo;
 	  
+	  @Autowired
+	  private CarRepository carRepo;
+	  
 	  public String addBooking(Booking b) {
 		  bookingRepo.save(b);
+		  // Decrement availableCount for the car
+		  Car car = carRepo.findById(b.getCar().getId()).orElse(null);
+		  if (car != null && car.getAvailableCount() > 0) {
+			  car.setAvailableCount(car.getAvailableCount() - 1);
+			  if (car.getAvailableCount() == 0) {
+				  car.setStatus("Unavailable");
+			  }
+			  carRepo.save(car);
+		  }
 	    return "Booking Data Inserted Successfully...!!!";
 	  }
 
